@@ -1,6 +1,7 @@
 // components/EventItem.js
 import { useState, useEffect } from "react";
 import io from "socket.io-client";
+import Link from "next/link";
 
 // Connect to the backend WebSocket server
 const socket = io("https://event-management-tmhj.onrender.com");
@@ -61,6 +62,11 @@ export default function EventItem({ event, refreshEvents }) {
       >
         Join Event
       </button>
+          <Link href={`/edit-event/${event._id}`}>
+    <a className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600 transition-colors">
+      Edit
+    </a>
+  </Link>
     </div>
   );
 }
