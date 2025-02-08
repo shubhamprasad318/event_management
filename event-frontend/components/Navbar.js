@@ -5,13 +5,17 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const router = useRouter();
+  const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isGuest, setIsGuest] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const storedUser = localStorage.getItem("user");
     const guest = localStorage.getItem("guest");
-    if (token) {
+
+    if (token && storedUser) {
+      setUser(JSON.parse(storedUser));
       setIsAuthenticated(true);
       setIsGuest(false);
     } else if (guest) {
@@ -27,6 +31,7 @@ export default function Navbar() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     localStorage.removeItem("guest");
+    setUser(null);
     setIsAuthenticated(false);
     setIsGuest(false);
     router.push("/login");
@@ -35,34 +40,34 @@ export default function Navbar() {
   return (
     <nav className="bg-blue-600 text-white p-4 flex justify-between items-center">
       <div className="flex items-center space-x-4">
-        <Link href="/" className="font-bold text-xl">
-          Event Management
+        <Link href="/">
+          <a className="font-bold text-xl">Event Management</a>
         </Link>
-        <Link href="/" className="hover:underline">
-          Dashboard
-        </Link>
-        <Link href="/search" className="hover:underline">
-          Search
+        <Link href="/">
+          <a className="hover:underline">Dashboard</a>
         </Link>
         {isAuthenticated && (
-          <Link href="/create-event" className="hover:underline">
-            Create Event
+          <Link href="/create-event">
+            <a className="hover:underline">Create Event</a>
           </Link>
         )}
       </div>
       <div className="flex items-center space-x-4">
-        {isAuthenticated && <span>Welcome, User</span>}
-        {isGuest && <span>Guest User</span>}
-        {!isAuthenticated && !isGuest ? (
+        {isAuthenticated && user ? (
+          <span>Welcome, {user.name}</span>
+        ) : isGuest ? (
+          <span>Guest User</span>
+        ) : (
           <>
-            <Link href="/login" className="hover:underline">
-              Login
+            <Link href="/login">
+              <a className="hover:underline">Login</a>
             </Link>
-            <Link href="/register" className="hover:underline">
-              Register
+            <Link href="/register">
+              <a className="hover:underline">Register</a>
             </Link>
           </>
-        ) : (
+        )}
+        {(isAuthenticated || isGuest) && (
           <button onClick={handleLogout} className="hover:underline">
             Logout
           </button>
