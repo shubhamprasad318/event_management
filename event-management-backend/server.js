@@ -16,7 +16,7 @@ const io = new Server(server, {
 // --- Middleware ---
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "https://event-management-seven-bice.vercel.app",
+    origin: process.env.FRONTEND_URL || "https://event-management-xi-rose.vercel.app/",
     credentials: true,
   })
 );
