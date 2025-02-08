@@ -14,7 +14,6 @@ const io = new Server(server, {
 });
 
 // --- Middleware ---
-const cors = require("cors");
 app.use(
   cors({
     origin: process.env.FRONTEND_URL || "https://event-management-seven-bice.vercel.app",
