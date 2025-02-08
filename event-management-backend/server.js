@@ -13,7 +13,7 @@ const io = new Server(server, {
   cors: { origin: "*" }, // Allow all origins for WebSocket connections
 });
 
-// --- Middleware ---
+// --- CORS Middleware ---
 const allowedOrigins = [
   'https://event-management-xi-rose.vercel.app',
   'https://event-management-shubhamprasad318s-projects.vercel.app'
@@ -21,12 +21,14 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (e.g. mobile apps or curl requests)
+    console.log("Incoming request origin:", origin);
+    // Allow requests with no origin (e.g. mobile apps, curl)
     if (!origin) return callback(null, true);
     if (allowedOrigins.indexOf(origin) !== -1) {
       return callback(null, true);
     } else {
-      return callback(new Error('Not allowed by CORS'));
+      // If the origin isn't in the allowed list, return an error.
+      return callback(new Error('Not allowed by CORS: ' + origin));
     }
   },
   credentials: true,
