@@ -56,17 +56,20 @@ export default function EventItem({ event, refreshEvents }) {
       <p className="mb-2">
         <span className="font-semibold">Attendees:</span> {attendees}
       </p>
-       <button
-    onClick={handleJoin}
-    className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors"
-  >
-    Join Event
-  </button>
-  <Link href={`/edit-event/${event._id}`}>
-    <a className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600 transition-colors">
-      Edit
-    </a>
-  </Link>
+      
+      <div className="flex items-center justify-between mt-6">
+        <button
+          onClick={handleJoin}
+          className="flex-1 mr-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-md shadow hover:bg-blue-700 transition duration-200"
+        >
+          Join Event
+        </button>
+        <Link href={`/edit-event/${event._id}`}>
+          <a className="flex-1 ml-2 px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-semibold rounded-md shadow hover:from-yellow-500 hover:to-yellow-600 transition duration-200 text-center">
+            Edit
+          </a>
+        </Link>
+      </div>
     </div>
   );
 }
