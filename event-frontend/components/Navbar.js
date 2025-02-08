@@ -41,6 +41,9 @@ export default function Navbar() {
         <Link href="/" className="hover:underline">
           Dashboard
         </Link>
+        <Link href="/search" className="hover:underline">
+          Search
+        </Link>
         {isAuthenticated && (
           <Link href="/create-event" className="hover:underline">
             Create Event
