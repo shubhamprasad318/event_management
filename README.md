@@ -77,7 +77,7 @@ JWT\_SECRET=your\_jwt\_secret\_key
 ### **Frontend Setup**
 
 1. **Navigate to the Frontend Folder:**  
-   cd ../event-management-frontend  
+   cd ../event-frontend  
 2. **Install Dependencies:**  
    npm install   
 3. **Start the Development Server:**  
