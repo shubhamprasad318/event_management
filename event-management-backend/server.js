@@ -16,18 +16,17 @@ const io = new Server(server, {
 // --- CORS Middleware ---
 const allowedOrigins = [
   'https://event-management-xi-rose.vercel.app',
-  'https://event-management-shubhamprasad318s-projects.vercel.app'
+  'https://event-management-c6dbfbe6e-shubhamprasad318s-projects.vercel.app'  // Updated to match incoming origin
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
     console.log("Incoming request origin:", origin);
-    // Allow requests with no origin (e.g. mobile apps, curl)
+    // Allow requests with no origin (e.g. mobile apps or curl requests)
     if (!origin) return callback(null, true);
     if (allowedOrigins.indexOf(origin) !== -1) {
       return callback(null, true);
     } else {
-      // If the origin isn't in the allowed list, return an error.
       return callback(new Error('Not allowed by CORS: ' + origin));
     }
   },
