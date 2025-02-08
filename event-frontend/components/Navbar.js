@@ -51,6 +51,9 @@ export default function Navbar() {
             <a className="hover:underline">Create Event</a>
           </Link>
         )}
+        <Link href="/search" className="hover:underline">
+          Search
+        </Link>
       </div>
       <div className="flex items-center space-x-4">
         {isAuthenticated && user ? (
