@@ -14,12 +14,14 @@ const io = new Server(server, {
 });
 
 // --- Middleware ---
+const cors = require("cors");
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL, // Set frontend URL from environment variables
+    origin: process.env.FRONTEND_URL || "https://event-management-seven-bice.vercel.app",
     credentials: true,
   })
 );
+
 app.use(express.json());
 
 // --- Connect to MongoDB ---
