@@ -8,7 +8,8 @@ import EventForm from "../components/EventForm";
 import EventList from "../components/EventList";
 import EventSearch from "../components/EventSearch";
 
-const API_URL = "http://localhost:5000";
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+
 let socket;
 
 export default function Home() {
