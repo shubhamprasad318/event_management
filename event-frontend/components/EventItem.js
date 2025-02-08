@@ -56,13 +56,13 @@ export default function EventItem({ event, refreshEvents }) {
       <p className="mb-2">
         <span className="font-semibold">Attendees:</span> {attendees}
       </p>
-      <button
-        onClick={handleJoin}
-        className="mt-4 w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors"
-      >
-        Join Event
-      </button>
-          <Link href={`/edit-event/${event._id}`}>
+       <button
+    onClick={handleJoin}
+    className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors"
+  >
+    Join Event
+  </button>
+  <Link href={`/edit-event/${event._id}`}>
     <a className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600 transition-colors">
       Edit
     </a>
