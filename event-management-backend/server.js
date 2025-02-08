@@ -14,7 +14,20 @@ const io = new Server(server, {
 });
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://your-frontend-name.vercel.app", // Vercel frontend URL
+    credentials: true,
+  })
+);
+
+app.use(
+  cors({
+    origin: "https://your-frontend-name.vercel.app", // Vercel frontend URL
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // Connect to MongoDB
