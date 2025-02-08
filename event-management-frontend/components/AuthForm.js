@@ -2,7 +2,8 @@
 "use client";
 import React, { useState } from "react";
 
-const API_URL = "http://localhost:5000";
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+
 
 const AuthForm = ({ onAuthSuccess, setMessage }) => {
   const [mode, setMode] = useState("login"); // "login" or "register"
